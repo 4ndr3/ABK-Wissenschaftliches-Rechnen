@@ -20,9 +20,9 @@ def Ableitung(y,t,L1,L2,m1,m2):
 	return theta1punkt, theta1punktpunkt, theta2punkt, theta2punktpunkt
 
 
-def make_plot(i):			#Plotten und Abspeichern des Doppelpendels fuer Zeitpunkt i
+def make_plot(i):											#Plotten und Abspeichern des Doppelpendels fuer Zeitpunkt i
 	ax.plot([0,x1[i],x2[i]], [0, y1[i],y2[i]], lw=2,c='k')	#Die Arme
-	c0 = Circle((0,0),r/2,fc='k',zorder=10)			#Kreise als Massen und Ankerpunkt
+	c0 = Circle((0,0),r/2,fc='k',zorder=10)					#Kreise als Massen und Ankerpunkt
 	c1 = Circle((x1[i],y1[i]),r,fc='b',ec='b',zorder=10)	
 	c2 = Circle((x2[i],y2[i]),r,fc='r',ec='r',zorder=10)	
 	ax.add_patch(c0)
@@ -51,8 +51,8 @@ def make_plot(i):			#Plotten und Abspeichern des Doppelpendels fuer Zeitpunkt i
 	
 t_max = 20
 dt = .01
-t = np.arange(0, t_max+dt ,dt)		#Zeitraum und Abstand der Zeitpunkte ergeben die Zeitmatrix [s]
-y0 = [np.pi/2,0,np.pi/2,0]			#Anfangsauslenkung
+t = np.arange(0, t_max+dt, dt)		#Zeitraum und Abstand der Zeitpunkte ergeben die Zeitmatrix [s]
+y0 = [np.pi/2, 0, np.pi / 2, 0]		#Anfangsauslenkung und Winkelgeschwindigkeit [theta1, omega1, theta2, omega2]
 
 
 y = odeint(Ableitung,y0,t,args=(L1,L2,m1,m2))	#Numerische Integration, Speicherung in y
@@ -68,11 +68,11 @@ y2 = y1 - L2 * np.cos(theta2)
 
 #Ab hier nur noch Plotten
 trail_secs = 1						#Schwanz von m2 fuer Sekunden
-max_trail = int(trail_secs/dt)		#Ueberfuehrung in Vektor
+max_trail = int(trail_secs / dt)	#Ueberfuehrung in Vektor
 
 
 fps = 10
-di = int(1/fps/dt)			# FEHLER in Python 2.x: for i in range(0, t.size, di): ValueError: range() step argument must not be zero. MIT 1. GEHT ES. oder mit Python 3.x geht es
+di = int(1. / fps / dt)			# FEHLER in Python 2.x: for i in range(0, t.size, di): ValueError: range() step argument must not be zero. MIT 1. GEHT ES. oder mit Python 3.x geht es
 fig , ax = plt.subplots()
 
 for i in range(0, t.size, di):

@@ -11,8 +11,8 @@ def pendel(y,t,b,c):
 
 #Definiere Variablen
 b = .25 							#Daempfung
-c = 5								#Pendellänge?
-y0 = [np.pi-.1,0]					#Array mit Startwerten [phi, phipunkt=omega]
+c = 5								#Pendellaenge?
+y0 = [np.pi-.1 , 0]					#Array mit Startwerten [phi, phipunkt=omega]
 t = np.linspace(0,10,101)			#Zeit array mint 101 gleigrossen Werten zwischen 0 und 10
 
 solution = odeint(pendel,y0,t,args=(b,c))	#Loesung der Differentialgleichung des Pendels mit den Startwerten
