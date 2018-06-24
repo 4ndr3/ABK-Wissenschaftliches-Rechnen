@@ -8,10 +8,10 @@ t = 0.
 t_max = 5.
 dt = .0001
 
-betam = 1								#? Irgendwas, was Gm_Mond manipuliert 
+betam = 1								#Falls der Mond heute mal schwerer ist, kann man etwas anderes als 1 waehlen
 
-Gm_Erde = 3. * 10**(-6)					#Konstanten
-Gm_Mond = 3.69 * 10**(-8) * betam
+Gm_Erde = 3. * 10**(-6)					# Gravitationskonstante G * m_Erde / ( 4 pi^2)
+Gm_Mond = 3.69 * 10**(-8) * betam		# Gravitationskonstante G * m_Mond / ( 4 pi^2)
 
 
 #Simulation initialisieren

@@ -12,7 +12,7 @@ def Eingabe():
 	while error == 1:
 		Intervallanfang = float(input("Intervallanfang:"))				#Intervall einlesen
 		Intervallende = float(input("Intervallende:"))
-		if (Funktion(Intervallanfang) * Funktion(Intervallende)) < 0:	#Testen ob f(oben)*f(unten) negativ
+		if (Funktion(Intervallanfang) * Funktion(Intervallende)) < 0:	#Testen ob f(oben)*f(unten) negativ; bedeutet zwischen den beiden Werten muss eine Nullstelle sein; das Programm funktioniert nicht wenn dazwischen keine Nullstelle liegt oder mehrere
 			error = 0			#Wenn ja, Eingabeschleife unterbrechen, regulaere Suche beginnen
 		elif Funktion(Intervallanfang) == 0:				#Wenn Nullstelle Anfangs- oder Endwert ausgeben und beenden
 			print("Nullstelle Anfangswert.")
@@ -38,11 +38,12 @@ while Fehler > epsilon:
 	print("Mitte:",Mittelwert)
 	if Funktion(Mittelwert) == 0:
 		Ergebnis(Mittelwert)
-	if (Funktion(Anfang) * Funktion(Mittelwert) < 0):
-		Ende = Mittelwert
-	else:
-		Anfang = Mittelwert
+	if (Funktion(Anfang) * Funktion(Mittelwert) < 0):	#Wenn pos. * neg. Wert (oder umgekehrt) neg. ist, dann liegt dasw. eine Nullstelle
+		Ende = Mittelwert	# Der obere Teil des Intervalls wird weggeworfen,
+	else:					# wenn anfang & mittel postiv ist, muss Nullstelle zwischen Mitte und Ende liegen
+		Anfang = Mittelwert	
 	Fehler = abs(Anfang - Ende)
 
 print("Naeherungsergebnis")
 Ergebnis(Anfang + Ende / 2.)
+Ergebnis(Mittelwert)	#muesste eigentlich genauso gehen
